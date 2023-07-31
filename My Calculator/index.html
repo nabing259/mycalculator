@@ -1,0 +1,172 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Calculator</title>
+    <style>
+      h1 {
+        text-align: center;
+        font-size: 55px;
+        color: teal;
+      }
+      #calculator{
+        height: 400px;
+        width: 25%;
+        margin: auto;
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+        padding-top: 20px;
+        border-radius: 10px;
+      }
+      #input{
+        height: 16%;
+        width: 90%;
+        display: flex;
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+        margin: auto;
+        border-radius: 10px;
+        justify-content: center;
+        align-items: center;
+        font-size: 20px;
+      }
+      #keyboard{
+        height: 77%;
+        width: 90%;
+        margin: auto;
+        margin-top: 15px;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: repeat(4, 1fr);
+        gap: 10px 10px;
+      }
+      #keyboard>div{
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+        display: grid;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+        font-size: 20px;
+        font-weight: bold;
+      }
+      #keyboard>div:hover{
+        background-color: grey;
+        color: black;
+        cursor: pointer;
+      }
+      #black{
+        background-color: black;
+        color: white;
+      }
+      #red{
+        background-color:red;
+        color: white;
+      }
+
+      @media only screen and (min-width: 320px) and (max-width: 480px) {
+        h1 {
+        text-align: center;
+        font-size: 40px;
+        color: blue;
+      }
+      #calculator{
+        height: 400px;
+        width: 85%;
+        margin: auto;
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+        padding-top: 20px;
+        border-radius: 10px;
+      }
+      #input{
+        height: 16%;
+        width: 90%;
+        display: flex;
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+        margin: auto;
+        border-radius: 10px;
+        justify-content: center;
+        align-items: center;
+        font-size: 20px;
+      }
+      #keyboard{
+        height: 77%;
+        width: 90%;
+        margin: auto;
+        margin-top: 15px;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: repeat(4, 1fr);
+        gap: 10px 10px;
+      }
+      #keyboard>div{
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+        display: grid;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+        font-size: 20px;
+        font-weight: bold;
+      }
+      #black{
+        background-color: black;
+        color: white;
+      }
+      #red{
+        background-color:red;
+        color: white;
+      }
+      }
+    </style>
+  </head>
+  <body>
+    <h1>My Calculator</h1>
+    <div id="calculator">
+      <div id="input"> </div>
+      <div id="keyboard">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <div id="black">+</div>
+        <div>4</div>
+        <div>5</div>
+        <div>6</div>
+        <div id="black">-</div>
+        <div>7</div>
+        <div>8</div>
+        <div>9</div>
+        <div id="black">*</div>
+        <div id="red">C</div>
+        <div>0</div>
+        <div id="black">=</div>
+        <div id="black">/</div>
+      </div>
+    </div>
+  </body>
+</html>
+
+<script>
+  var nums = document.querySelectorAll("#keyboard>div");
+  var display = document.querySelector("#input");
+
+  for(var i = 0; i<nums.length; i++) {
+    nums[i].addEventListener("click", myCal);
+  }
+
+  function myCal(){
+    var targetValue = event.target.innerText;
+
+    switch(targetValue) {
+      case "C":
+        display.innerText = "";
+        break;
+
+      case "=": 
+        display.innerText= eval(display.innerText);
+        break;
+      
+      default: 
+        display.innerText += targetValue;
+    }
+  }
+</script>
